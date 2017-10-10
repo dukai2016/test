@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidationUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ESTI_Common_Utils</a> &gt; <a href="index.source.html" class="el_package">org.phsa.esti.common.utils.validation</a> &gt; <span class="el_source">ValidationUtils.java</span></div><h1>ValidationUtils.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.phsa.esti.common.utils.validation;
+
+/**
+ *
+ * @author kai.du
+ */
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import org.apache.commons.lang.StringUtils;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.github.fge.jackson.JsonLoader;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.report.LogLevel;
+import com.github.fge.jsonschema.core.report.ProcessingMessage;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
+import com.github.fge.jsonschema.main.JsonSchema;
+import com.github.fge.jsonschema.main.JsonSchemaFactory;
+
+<span class="nc" id="L27">public class ValidationUtils {</span>
+
+    public static final String JSON_V4_SCHEMA_IDENTIFIER = &quot;http://json-schema.org/draft-04/schema#&quot;;
+    public static final String JSON_SCHEMA_IDENTIFIER_ELEMENT = &quot;$schema&quot;;
+
+    public static JsonNode getJsonNode(String jsonText)
+            throws IOException {
+<span class="fc" id="L34">        return JsonLoader.fromString(jsonText);</span>
+    } // getJsonNode(text) ends
+
+    public static JsonNode getJsonNode(File jsonFile)
+            throws IOException {
+<span class="nc" id="L39">        return JsonLoader.fromFile(jsonFile);</span>
+    } // getJsonNode(File) ends
+
+    public static JsonNode getJsonNode(URL url)
+            throws IOException {
+<span class="nc" id="L44">        return JsonLoader.fromURL(url);</span>
+    } // getJsonNode(URL) ends
+
+    public static JsonNode getJsonNodeFromResource(String resource)
+            throws IOException {
+<span class="nc" id="L49">        return JsonLoader.fromResource(resource);</span>
+    } // getJsonNode(Resource) ends
+
+    public static JsonSchema getSchemaNode(String schemaText)
+            throws IOException, ProcessingException {
+<span class="fc" id="L54">        final JsonNode schemaNode = getJsonNode(schemaText);</span>
+<span class="fc" id="L55">        return _getSchemaNode(schemaNode);</span>
+    } // getSchemaNode(text) ends
+
+    public static JsonSchema getSchemaNode(File schemaFile)
+            throws IOException, ProcessingException {
+<span class="nc" id="L60">        final JsonNode schemaNode = getJsonNode(schemaFile);</span>
+<span class="nc" id="L61">        return _getSchemaNode(schemaNode);</span>
+    } // getSchemaNode(File) ends
+
+    public static JsonSchema getSchemaNode(URL schemaFile)
+            throws IOException, ProcessingException {
+<span class="nc" id="L66">        final JsonNode schemaNode = getJsonNode(schemaFile);</span>
+<span class="nc" id="L67">        return _getSchemaNode(schemaNode);</span>
+    } // getSchemaNode(URL) ends
+
+    public static JsonSchema getSchemaNodeFromResource(String resource)
+            throws IOException, ProcessingException {
+<span class="nc" id="L72">        final JsonNode schemaNode = getJsonNodeFromResource(resource);</span>
+<span class="nc" id="L73">        return _getSchemaNode(schemaNode);</span>
+    } // getSchemaNode() ends
+
+    public static void validateJson(JsonSchema jsonSchemaNode, JsonNode jsonNode)
+            throws ProcessingException {
+<span class="nc" id="L78">        ProcessingReport report = jsonSchemaNode.validate(jsonNode);</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (!report.isSuccess()) {</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            for (ProcessingMessage processingMessage : report) {</span>
+<span class="nc" id="L81">                throw new ProcessingException(processingMessage);</span>
+            }
+        }
+<span class="nc" id="L84">    } // validateJson(Node) ends</span>
+
+    public static boolean isJsonValid(JsonSchema jsonSchemaNode, JsonNode jsonNode) throws ProcessingException {
+<span class="fc" id="L87">        ProcessingReport report = jsonSchemaNode.validate(jsonNode);</span>
+<span class="fc" id="L88">        return report.isSuccess();</span>
+    } // validateJson(Node) ends
+
+    public static boolean isJsonValid(String schemaText, String jsonText) throws ProcessingException, IOException {
+<span class="fc" id="L92">        final JsonSchema schemaNode = getSchemaNode(schemaText);</span>
+<span class="fc" id="L93">        final JsonNode jsonNode = getJsonNode(jsonText);</span>
+<span class="fc" id="L94">        return isJsonValid(schemaNode, jsonNode);</span>
+    } // validateJson(Node) ends
+
+    public static boolean isJsonValid(File schemaFile, File jsonFile) throws ProcessingException, IOException {
+<span class="nc" id="L98">        final JsonSchema schemaNode = getSchemaNode(schemaFile);</span>
+<span class="nc" id="L99">        final JsonNode jsonNode = getJsonNode(jsonFile);</span>
+<span class="nc" id="L100">        return isJsonValid(schemaNode, jsonNode);</span>
+    } // validateJson(Node) ends
+
+    public static boolean isJsonValid(URL schemaURL, URL jsonURL) throws ProcessingException, IOException {
+<span class="nc" id="L104">        final JsonSchema schemaNode = getSchemaNode(schemaURL);</span>
+<span class="nc" id="L105">        final JsonNode jsonNode = getJsonNode(jsonURL);</span>
+<span class="nc" id="L106">        return isJsonValid(schemaNode, jsonNode);</span>
+    } // validateJson(Node) ends    
+
+    public static void validateJson(String schemaText, String jsonText) throws IOException, ProcessingException {
+<span class="nc" id="L110">        final JsonSchema schemaNode = getSchemaNode(schemaText);</span>
+<span class="nc" id="L111">        final JsonNode jsonNode = getJsonNode(jsonText);</span>
+<span class="nc" id="L112">        validateJson(schemaNode, jsonNode);</span>
+<span class="nc" id="L113">    } // validateJson(text) ends</span>
+
+    public static void validateJson(File schemaFile, File jsonFile) throws IOException, ProcessingException {
+<span class="nc" id="L116">        final JsonSchema schemaNode = getSchemaNode(schemaFile);</span>
+<span class="nc" id="L117">        final JsonNode jsonNode = getJsonNode(jsonFile);</span>
+<span class="nc" id="L118">        validateJson(schemaNode, jsonNode);</span>
+<span class="nc" id="L119">    } // validateJson(File) ends</span>
+
+    public static void validateJson(URL schemaDocument, URL jsonDocument) throws IOException, ProcessingException {
+<span class="nc" id="L122">        final JsonSchema schemaNode = getSchemaNode(schemaDocument);</span>
+<span class="nc" id="L123">        final JsonNode jsonNode = getJsonNode(jsonDocument);</span>
+<span class="nc" id="L124">        validateJson(schemaNode, jsonNode);</span>
+<span class="nc" id="L125">    } // validateJson(URL) ends</span>
+
+    public static void validateJsonResource(String schemaResource, String jsonResource) throws IOException, ProcessingException {
+<span class="nc" id="L128">        final JsonSchema schemaNode = getSchemaNode(schemaResource);</span>
+<span class="nc" id="L129">        final JsonNode jsonNode = getJsonNodeFromResource(jsonResource);</span>
+<span class="nc" id="L130">        validateJson(schemaNode, jsonNode);</span>
+<span class="nc" id="L131">    } // validateJsonResource() ends</span>
+
+    private static JsonSchema _getSchemaNode(JsonNode jsonNode)
+            throws ProcessingException {
+<span class="fc" id="L135">        final JsonNode schemaIdentifier = jsonNode.get(JSON_SCHEMA_IDENTIFIER_ELEMENT);</span>
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">        if (null == schemaIdentifier) {</span>
+<span class="nc" id="L137">            ((ObjectNode) jsonNode).put(JSON_SCHEMA_IDENTIFIER_ELEMENT, JSON_V4_SCHEMA_IDENTIFIER);</span>
+        }
+
+<span class="fc" id="L140">        final JsonSchemaFactory factory = JsonSchemaFactory.byDefault();</span>
+<span class="fc" id="L141">        return factory.getJsonSchema(jsonNode);</span>
+    } // _getSchemaNode() ends
+
+    private static ProcessingReport reportJsonValid(JsonSchema jsonSchemaNode, JsonNode jsonNode) throws ProcessingException {
+<span class="fc" id="L145">        ProcessingReport report = jsonSchemaNode.validate(jsonNode);</span>
+
+<span class="fc" id="L147">        return report;</span>
+    } // validateJson(Node) ends
+
+    public static ValidationResult reportJsonValid(String schemaText, String jsonText) throws ProcessingException, IOException {
+<span class="fc" id="L151">        final JsonSchema schemaNode = getSchemaNode(schemaText);</span>
+<span class="fc" id="L152">        final JsonNode jsonNode = getJsonNode(jsonText);</span>
+
+<span class="fc" id="L154">        ProcessingReport report = reportJsonValid(schemaNode, jsonNode);</span>
+<span class="fc" id="L155">        ValidationResult result = new ValidationResult();</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        if (report.isSuccess()) {</span>
+<span class="fc" id="L157">            result.setStatus(ValidationStatus.SUCCESS);</span>
+        } else {
+<span class="fc" id="L159">            result.setStatus(ValidationStatus.ERROR);</span>
+<span class="fc" id="L160">            result.setError(getFirstError(report));</span>
+        }
+<span class="fc" id="L162">        return result;</span>
+
+    } // validateJson(Node) ends
+
+    private static ValidationError getFirstError(ProcessingReport report) {
+<span class="fc" id="L167">        ValidationError error = new ValidationError();</span>
+<span class="pc bpc" id="L168" title="1 of 2 branches missed.">        for (ProcessingMessage processingMessage : report) {</span>
+<span class="pc bpc" id="L169" title="1 of 2 branches missed.">            if (LogLevel.ERROR.equals(processingMessage.getLogLevel())) {</span>
+<span class="fc" id="L170">                JsonNode errorNodes = processingMessage.asJson();</span>
+<span class="fc" id="L171">                JsonNode pointerNode = errorNodes.get(&quot;instance&quot;).get(&quot;pointer&quot;);</span>
+<span class="pc bpc" id="L172" title="1 of 2 branches missed.">                if (errorNodes.get(&quot;keyword&quot;) != null) {</span>
+<span class="pc bpc" id="L173" title="1 of 2 branches missed.">                    if (errorNodes.get(&quot;keyword&quot;).textValue().equals(&quot;required&quot;)) {</span>
+<span class="fc" id="L174">                        error.setType(ValidationErrorType.MissingRequiredData);</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">                        if (errorNodes.get(&quot;missing&quot;)!=null)</span>
+<span class="fc" id="L176">                            error.setMissing(errorNodes.get(&quot;missing&quot;).toString());</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">                    }else if (errorNodes.get(&quot;instance&quot;).get(&quot;pointer&quot;) != null) {</span>
+                    
+<span class="nc" id="L179">                        error.setType(ValidationErrorType.InvalidValue);</span>
+<span class="nc" id="L180">                        error.setPointer(errorNodes.get(&quot;instance&quot;).get(&quot;pointer&quot;).asText());</span>
+                    }
+                } 
+                  
+<span class="pc bpc" id="L184" title="1 of 2 branches missed.">                if(error.getType()==null){</span>
+<span class="nc" id="L185">                     error.setType(ValidationErrorType.InvalidValue);</span>
+<span class="nc" id="L186">                     error.setPointer(processingMessage.getMessage());</span>
+                }
+                    
+                break;
+            }
+<span class="nc" id="L191">        }</span>
+
+<span class="fc" id="L193">        return error;</span>
+    }
+
+    public static String getErrorsList(ProcessingReport report, boolean onlyErrors) {
+<span class="nc" id="L197">        StringBuilder jsonValidationErrors = new StringBuilder();</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">        for (ProcessingMessage processingMessage : report) {</span>
+<span class="nc bnc" id="L199" title="All 4 branches missed.">            if (onlyErrors &amp;&amp; LogLevel.ERROR.equals(processingMessage.getLogLevel())) {</span>
+<span class="nc" id="L200">                jsonValidationErrors.append(processingMessage.getLogLevel().name())</span>
+                        .append(&quot; &quot;)
+                        .append(processingMessage.asJson().get(&quot;instance&quot;).get(&quot;pointer&quot;).asText())
+                        .append(&quot; &quot;)
+                        .append(processingMessage.getMessage())
+                        .append(&quot;\n\r&quot;);
+
+<span class="nc bnc" id="L207" title="All 2 branches missed.">            } else if (!onlyErrors) {</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">                if (LogLevel.ERROR.equals(processingMessage.getLogLevel())) {</span>
+<span class="nc" id="L209">                    jsonValidationErrors.append(processingMessage.getLogLevel().name())</span>
+                            .append(&quot; &quot;)
+                            .append(processingMessage.asJson().get(&quot;instance&quot;).get(&quot;pointer&quot;).asText())
+                            .append(&quot; &quot;)
+                            .append(processingMessage.getMessage())
+                            .append(&quot;\n\r&quot;);
+                } else {
+<span class="nc" id="L216">                    jsonValidationErrors.append(processingMessage.getLogLevel().name())</span>
+                            .append(&quot; &quot;)
+                            .append(processingMessage.getMessage())
+                            .append(&quot;\n\r&quot;);
+                }
+            }
+<span class="nc" id="L222">        }</span>
+<span class="nc" id="L223">        return jsonValidationErrors.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CurrentTimeUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ESTI_Common_Utils</a> &gt; <a href="index.source.html" class="el_package">org.phsa.esti.common.utils.date</a> &gt; <span class="el_source">CurrentTimeUtility.java</span></div><h1>CurrentTimeUtility.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.phsa.esti.common.utils.date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+import java.text.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.logging.Level;
+
+
+
+
+<span class="nc" id="L28">public class CurrentTimeUtility  {</span>
+
+<span class="nc" id="L30">    private static final Logger LOGGER = LoggerFactory.getLogger(CurrentTimeUtility.class);</span>
+
+    
+    public static Date getCurrentUTCDateAndTime() {
+
+<span class="nc" id="L35">        SimpleDateFormat dateFormatGmt = new SimpleDateFormat(&quot;yyyy-MMM-dd HH:mm:ss&quot;);</span>
+<span class="nc" id="L36">        dateFormatGmt.setTimeZone(TimeZone.getTimeZone(&quot;GMT&quot;));</span>
+
+//Local time zone   
+<span class="nc" id="L39">        SimpleDateFormat dateFormatLocal = new SimpleDateFormat(&quot;yyyy-MMM-dd HH:mm:ss&quot;);</span>
+
+//Time in GMT
+        Date utcDate;
+        try {
+<span class="nc" id="L44">            utcDate = dateFormatLocal.parse(dateFormatGmt.format(new Date()));</span>
+<span class="nc" id="L45">        } catch (ParseException ex) {</span>
+<span class="nc" id="L46">            LOGGER.error(ex.getMessage());</span>
+<span class="nc" id="L47">            return null;</span>
+<span class="nc" id="L48">        }</span>
+
+<span class="nc" id="L50">        return utcDate;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,330 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#", 
+  "definitions": {}, 
+  "id": "http://example.com/example.json", 
+  "properties": {
+    "actualEndDate": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/actualEndDate", 
+      "title": "The actualenddate schema", 
+      "type": "null"
+    }, 
+    "catalogueItemId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/catalogueItemId", 
+      "title": "The catalogueitemid schema", 
+      "type": "null"
+    }, 
+    "catalogueItemIdL2": {
+      "default": 190, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/catalogueItemIdL2", 
+      "title": "The catalogueitemidl2 schema", 
+      "type": "integer"
+    }, 
+    "courseCompletedCodeCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/courseCompletedCodeCncptId", 
+      "title": "The coursecompletedcodecncptid schema", 
+      "type": "null"
+    }, 
+    "createdBy": {
+      "default": "ephs.URN:UUID:6FD8CDAAAD3D4D87A3509C675FB769D7", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/createdBy", 
+      "title": "The createdby schema", 
+      "type": "string"
+    }, 
+    "createdOn": {
+      "default": "07/20/2017", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/createdOn", 
+      "title": "The createdon schema", 
+      "type": "string"
+    }, 
+    "discontinuedBy": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/discontinuedBy", 
+      "title": "The discontinuedby schema", 
+      "type": "null"
+    }, 
+    "discontinuedByProviderOther": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/discontinuedByProviderOther", 
+      "title": "The discontinuedbyproviderother schema", 
+      "type": "null"
+    }, 
+    "discontinuedDate": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/discontinuedDate", 
+      "title": "The discontinueddate schema", 
+      "type": "null"
+    }, 
+    "discountinuedResnCdCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/discountinuedResnCdCncptId", 
+      "title": "The discountinuedresncdcncptid schema", 
+      "type": "null"
+    }, 
+    "dose": {
+      "default": 100, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/dose", 
+      "title": "The dose schema", 
+      "type": "integer"
+    }, 
+    "doseFormCodeCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/doseFormCodeCncptId", 
+      "title": "The doseformcodecncptid schema", 
+      "type": "null"
+    }, 
+    "doseUnitCodeCncptId": {
+      "default": 493417, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/doseUnitCodeCncptId", 
+      "title": "The doseunitcodecncptid schema", 
+      "type": "integer"
+    }, 
+    "drugDescription": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/drugDescription", 
+      "title": "The drugdescription schema", 
+      "type": "null"
+    }, 
+    "drugProtocolId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/drugProtocolId", 
+      "title": "The drugprotocolid schema", 
+      "type": "null"
+    }, 
+    "duration": {
+      "default": 7, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/duration", 
+      "title": "The duration schema", 
+      "type": "integer"
+    }, 
+    "durationUnitCodeCncptId": {
+      "default": 496012, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/durationUnitCodeCncptId", 
+      "title": "The durationunitcodecncptid schema", 
+      "type": "integer"
+    }, 
+    "effectiveDate": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/effectiveDate", 
+      "title": "The effectivedate schema", 
+      "type": "null"
+    }, 
+    "effectiveDateEstimatedInd": {
+      "default": "N", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/effectiveDateEstimatedInd", 
+      "title": "The effectivedateestimatedind schema", 
+      "type": "string"
+    }, 
+    "encounterId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/encounterId", 
+      "title": "The encounterid schema", 
+      "type": "null"
+    }, 
+    "frequencyCodeCncptId": {
+      "default": 479792, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/frequencyCodeCncptId", 
+      "title": "The frequencycodecncptid schema", 
+      "type": "integer"
+    }, 
+    "genericDrugName": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/genericDrugName", 
+      "title": "The genericdrugname schema", 
+      "type": "null"
+    }, 
+    "investigationId": {
+      "default": 81110, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/investigationId", 
+      "title": "The investigationid schema", 
+      "type": "integer"
+    }, 
+    "isDeletedInd": {
+      "default": "N", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/isDeletedInd", 
+      "title": "The isdeletedind schema", 
+      "type": "string"
+    }, 
+    "lockSeqNum": {
+      "default": 3, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/lockSeqNum", 
+      "title": "The lockseqnum schema", 
+      "type": "integer"
+    }, 
+    "modifiedBy": {
+      "default": "ephs.URN:UUID:6FD8CDAAAD3D4D87A3509C675FB769D7", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/modifiedBy", 
+      "title": "The modifiedby schema", 
+      "type": "string"
+    }, 
+    "modifiedOn": {
+      "default": "07/20/2017", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/modifiedOn", 
+      "title": "The modifiedon schema", 
+      "type": "string"
+    }, 
+    "nonhumanSubjectId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/nonhumanSubjectId", 
+      "title": "The nonhumansubjectid schema", 
+      "type": "null"
+    }, 
+    "orderDuration": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/orderDuration", 
+      "title": "The orderduration schema", 
+      "type": "null"
+    }, 
+    "orderDurationUntCdCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/orderDurationUntCdCncptId", 
+      "title": "The orderdurationuntcdcncptid schema", 
+      "type": "null"
+    }, 
+    "otherMedInd": {
+      "default": "Y", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/otherMedInd", 
+      "title": "The othermedind schema", 
+      "type": "string"
+    }, 
+    "prescribedBy": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prescribedBy", 
+      "title": "The prescribedby schema", 
+      "type": "null"
+    }, 
+    "prescribedByProviderOther": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prescribedByProviderOther", 
+      "title": "The prescribedbyproviderother schema", 
+      "type": "null"
+    }, 
+    "prescripReasonCodeCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prescripReasonCodeCncptId", 
+      "title": "The prescripreasoncodecncptid schema", 
+      "type": "null"
+    }, 
+    "prescriptionDate": {
+      "default": "07/20/2017", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prescriptionDate", 
+      "title": "The prescriptiondate schema", 
+      "type": "string"
+    }, 
+    "prescriptionId": {
+      "default": 12298, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prescriptionId", 
+      "title": "The prescriptionid schema", 
+      "type": "integer"
+    }, 
+    "prescriptionReasonOther": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prescriptionReasonOther", 
+      "title": "The prescriptionreasonother schema", 
+      "type": "null"
+    }, 
+    "prevSubjectId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/prevSubjectId", 
+      "title": "The prevsubjectid schema", 
+      "type": "null"
+    }, 
+    "reasnDrgNtStppdCdCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/reasnDrgNtStppdCdCncptId", 
+      "title": "The reasndrgntstppdcdcncptid schema", 
+      "type": "null"
+    }, 
+    "reasonDrugStoppdCdCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/reasonDrugStoppdCdCncptId", 
+      "title": "The reasondrugstoppdcdcncptid schema", 
+      "type": "null"
+    }, 
+    "routeCodeCncptId": {
+      "default": 1279134, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/routeCodeCncptId", 
+      "title": "The routecodecncptid schema", 
+      "type": "integer"
+    }, 
+    "specialDirection": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/specialDirection", 
+      "title": "The specialdirection schema", 
+      "type": "null"
+    }, 
+    "startDate": {
+      "default": "07/20/2017", 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/startDate", 
+      "title": "The startdate schema", 
+      "type": "string"
+    }, 
+    "subjectId": {
+      "default": 2468041, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/subjectId", 
+      "title": "The subjectid schema", 
+      "type": "integer"
+    }, 
+    "treatmentDurUnitCncptId": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/treatmentDurUnitCncptId", 
+      "title": "The treatmentdurunitcncptid schema", 
+      "type": "null"
+    }, 
+    "treatmentDuration": {
+      "default": null, 
+      "description": "An explanation about the purpose of this instance.", 
+      "id": "/properties/treatmentDuration", 
+      "title": "The treatmentduration schema", 
+      "type": "null"
+    }
+  }, 
+  "type": "object"
+}

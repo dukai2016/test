@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ESTI_Common_Utils</a> &gt; <a href="index.source.html" class="el_package">org.phsa.esti.common.utils</a> &gt; <span class="el_source">StringUtility.java</span></div><h1>StringUtility.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.phsa.esti.common.utils;
+
+/**
+ *
+ * @author kai.du
+ */
+<span class="nc" id="L12">public class StringUtility {</span>
+    public static final char LF = '\n';
+    public static final char CR = '\r';
+    public static boolean equalsIgnoreNewlineTwirks(String str, String other){
+<span class="pc bpc" id="L16" title="2 of 4 branches missed.">        if (str == null || other == null){</span>
+<span class="nc" id="L17">            return false;</span>
+        }
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">        if (str.equals(other)){</span>
+<span class="nc" id="L20">            return true;</span>
+        }
+
+<span class="fc" id="L23">        char[] s1 = str.toCharArray();</span>
+<span class="fc" id="L24">        char[] s2 = other.toCharArray();</span>
+<span class="fc" id="L25">        int index1 = 0, index2 = 0;</span>
+        while (true){
+<span class="fc bfc" id="L27" title="All 4 branches covered.">            boolean oob1 = index1 &gt;= s1.length, oob2 = index2 &gt;= s2.length;</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (oob1 | oob2){</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">                if(!oob1){</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">                    while(index1 &lt; s1.length){</span>
+<span class="pc bpc" id="L31" title="1 of 4 branches missed.">                        if(s1[index1]!=LF &amp;&amp; s1[index1]!=CR)break;</span>
+<span class="fc" id="L32">                        index1++;</span>
+                    }
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">                 oob1 = index1 &gt;= s1.length;</span>
+                }
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">                else if(!oob2){</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                    while(index2 &lt; s2.length){</span>
+<span class="pc bpc" id="L38" title="1 of 4 branches missed.">                        if(s2[index2]!=LF &amp;&amp; s2[index2]!=CR)break;</span>
+<span class="fc" id="L39">                        index2++;</span>
+                    }
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                   oob2 = index2 &gt;= s2.length;</span>
+                }
+<span class="fc" id="L43">                return oob1 &amp; oob2;</span>
+            }
+
+<span class="fc" id="L46">            char ch1 = s1[index1], ch2 = s2[index2];</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            if (ch1 != ch2){</span>
+<span class="pc bpc" id="L48" title="5 of 8 branches missed.">                if (ch1 != LF &amp;&amp; ch1 != CR &amp;&amp; ch2 != LF &amp;&amp; ch2 != CR) return false;</span>
+
+<span class="pc bpc" id="L50" title="2 of 6 branches missed.">                if (index1 + 1 &lt; s1.length &amp;&amp; (ch1 == LF || ch1 == CR)){</span>
+<span class="fc" id="L51">                    index1++;</span>
+                }
+<span class="pc bpc" id="L53" title="3 of 6 branches missed.">                if (index2 + 1 &lt; s2.length &amp;&amp; (ch2 == LF || ch2 == CR)){</span>
+<span class="nc" id="L54">                    index2++;</span>
+                }
+<span class="fc" id="L56">                index1--; index2--;</span>
+            }
+<span class="fc" id="L58">            index1++; index2++;</span>
+<span class="fc" id="L59">        }</span>
+    }
+
+    private static boolean isCRAndLF(char ch1, char ch2){
+<span class="nc bnc" id="L63" title="All 8 branches missed.">        return (ch1 == CR &amp;&amp; ch2 == LF) || (ch1 == LF &amp;&amp; ch2 == CR);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

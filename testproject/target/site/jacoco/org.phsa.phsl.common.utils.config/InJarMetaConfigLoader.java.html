@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InJarMetaConfigLoader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ESTI_Common_Utils</a> &gt; <a href="index.source.html" class="el_package">org.phsa.phsl.common.utils.config</a> &gt; <span class="el_source">InJarMetaConfigLoader.java</span></div><h1>InJarMetaConfigLoader.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.phsa.phsl.common.utils.config;
+
+import java.io.IOException;
+import java.util.Properties;
+
+/**
+ *
+ * @author kai.du
+ */
+/*
+put the proerty fiel in the META-INF
+
+*/
+import java.io.InputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+        
+<span class="fc" id="L23">public class InJarMetaConfigLoader implements ConfigLoader{</span>
+<span class="fc" id="L24"> private static final Logger logger = LoggerFactory.getLogger(InJarMetaConfigLoader.class);</span>
+ 
+    @Override
+    public Properties getConfig(String file) {
+        // return getConfigImpl(&quot;META-INF&quot;,file);
+<span class="fc" id="L29">        logger.info(&quot;Enter InJarMetaConfigLoader &quot;);</span>
+<span class="fc" id="L30">        InputStream propertiesIs = this.getClass().getClassLoader().getResourceAsStream(file);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (propertiesIs==null)</span>
+<span class="nc" id="L32">            propertiesIs = this.getClass().getClassLoader().getResourceAsStream(&quot;META-INF/&quot;+file);</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">         if (propertiesIs==null)    return null;</span>
+<span class="fc" id="L34">        Properties prop = new Properties();</span>
+        try {
+<span class="fc" id="L36">            prop.load(propertiesIs);</span>
+<span class="nc" id="L37">        } catch (IOException ex) {</span>
+<span class="nc" id="L38">            logger.error(ex.getMessage());</span>
+        }
+        finally{
+<span class="pc bpc" id="L41" title="5 of 6 branches missed.">            if (propertiesIs!=null)</span>
+                try {
+<span class="pc" id="L43">                    propertiesIs.close();</span>
+<span class="nc" id="L44">            } catch (IOException ex) {</span>
+<span class="nc" id="L45">                logger.error(ex.getMessage());</span>
+<span class="pc" id="L46">            }</span>
+        }
+        // System.out.println(prop.getProperty(YourPropertyHere));
+<span class="fc" id="L49">         return prop;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

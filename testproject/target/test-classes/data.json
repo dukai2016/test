@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "A green door",
+  "price": 12.5,
+  "checked": false,
+  "date": "2017-02-01",
+  "tags": [
+    "home",
+    "green"
+  ]
+}
